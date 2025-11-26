@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    background-color: rgb(246, 246, 246);
+}
+
+#logo {
+    width: 200px;;
+}
+
+main {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 30vw;
+    margin: auto;
+    flex-direction: column;
+}
+
+button {
+    display: block;
+    margin: auto;
+    margin-top: 30px;
+}
