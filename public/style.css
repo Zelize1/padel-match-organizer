@@ -3,8 +3,11 @@
 body {
     margin: 0;
     font-family: "Montserrat", sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
-
+    
 nav {
     display: flex;
     justify-content: center;
@@ -29,6 +32,7 @@ main {
     width: 50vw;
     margin: auto;
     flex-direction: column;
+    flex: 1;
 }
 
 .submitted-page {
@@ -77,6 +81,21 @@ button:hover {
     color: white;
     transition: background-color 0.3s, color 0.3s;
     cursor: pointer;
+}
+
+footer {
+    display: flex;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    font-weight: bold;
+    background-color: rgb(246, 246, 246);
+
+}
+
+.github {
+    width: 30px;
 }
 
 @media (max-width: 600px) {
