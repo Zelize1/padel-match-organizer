@@ -1,37 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <nav>
-        <img src="./assets/logo-horizontal.png" alt="Padel racket logo" id="logo">
+      <img
+        src="./assets/logo-horizontal.png"
+        alt="Padel racket logo"
+        id="logo"
+      />
     </nav>
 
     <main>
-        <h1>Legg inn når du kan spille</h1>
-        <form action="https://formsubmit.co/bfa53214c74426c1c2f1d949a66c5ebb" method="POST">
-            <input type="hidden" name="_next" value="https://padel-matching-ddb11.firebaseapp.com/submitted.html">
-            <input type="hidden" name="_captcha" value="false">
-            <label for="name">Skriv inn ditt fornavn:</label>
-            <input type="text" id="name" name="name" required>
-            
-            <label for="date" name="">Velg dato:</label>
-            <input type="date" id="date" name="date" required>
+      <h1>Legg inn når du kan spille</h1>
+      <form
+        action="https://formsubmit.co/bfa53214c74426c1c2f1d949a66c5ebb"
+        method="POST"
+      >
+        <input
+          type="hidden"
+          name="_next"
+          value="https://padel-matching-ddb11.firebaseapp.com/submitted.html"
+        />
+        <input type="hidden" name="_captcha" value="false" />
+        <label for="name">Fornavn:</label>
+        <input type="text" id="name" name="name" required />
 
-            <p>Velg hvilket tidsrom som passer</p>
-            <label for="time">Velg tidspunkt - Mellom</label>
-            <input type="time" id="time-start" name="time-start" required>
+        <label for="date" name="">Dato:</label>
+        <input type="date" id="date" name="date" required />
 
-            <label for="time"> og</label>
-            <input type="time" id="time-end" name="time-end" required>
-            <button type="submit">Send inn tidspunkt</button>
-            
-        </form>
-        <p>For å legge inn flere datoer, send inn nytt skjema.</p>
+        <p class="velg-tidsrom">Velg tidsrom</p>
+        <label for="time">Fra</label>
+        <input type="time" id="time-start" name="time-start" required />
+
+        <label for="time">Til</label>
+        <input type="time" id="time-end" name="time-end" required />
+        <button type="submit">Send inn tidspunkt</button>
+      </form>
+      <p>For å legge inn flere datoer, send inn nytt skjema.</p>
+
+      <p>
+        Skjemaet blir sendt til meg på e-post, deretter fører jeg opp i
+        <a
+          href="https://docs.google.com/spreadsheets/d/1xPUL1TCHZ1C0mqsJKx0AfNIoQCEfh0ol4V7x9zu3WOQ/edit?usp=sharing"
+          >Google Sheets</a
+        >
+      </p>
+      <div class="line"></div>
+      <h3>
+        NB! Når jeg ser at jeg har fått inn 4 påmeldte (inkl meg) i samme
+        tidsrom, så booker jeg bane dersom det er ledig på Feel24. Jeg sender
+        melding i chatten om hvem som er med etter at jeg har booket bane. Vær
+        helt sikker på at du er ledig når du setter deg opp.
+      </h3>
+      <h3>Hvis du har sendt feil, send meg en melding, så kan jeg fikse.</h3>
     </main>
-</body>
+  </body>
 </html>
