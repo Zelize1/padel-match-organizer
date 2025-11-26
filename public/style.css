@@ -31,6 +31,20 @@ main {
     flex-direction: column;
 }
 
+.submitted-page {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.patience {
+    font-style: italic;
+    font-size: 1em;
+}
+
+.underline {
+    font-weight: bold;
+}
+
 .velg-tidsrom {
     margin-top: 20px;
     margin-bottom: 0;
