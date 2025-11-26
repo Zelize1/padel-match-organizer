@@ -8,22 +8,28 @@
 </head>
 <body>
     <nav>
-        <img src="/assets/logo-horizontal.png" alt="Padel racket logo" id="logo">
+        <img src="./assets/logo-horizontal.png" alt="Padel racket logo" id="logo">
     </nav>
 
     <main>
         <h1>Legg inn når du kan spille</h1>
-        <form action="">
-            <label for="date">Velg dato:</label>
+        <form action="https://formsubmit.co/bfa53214c74426c1c2f1d949a66c5ebb" method="POST">
+            <input type="hidden" name="_next" value="https://padel-matching-ddb11.firebaseapp.com/submitted.html">
+            <input type="hidden" name="_captcha" value="false">
+            <label for="name">Skriv inn ditt fornavn:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="date" name="">Velg dato:</label>
             <input type="date" id="date" name="date" required>
 
             <p>Velg hvilket tidsrom som passer</p>
             <label for="time">Velg tidspunkt - Mellom</label>
-            <input type="time" id="time" name="time" required>
+            <input type="time" id="time-start" name="time-start" required>
 
             <label for="time"> og</label>
-            <input type="time" id="time" name="time" required>
+            <input type="time" id="time-end" name="time-end" required>
             <button type="submit">Send inn tidspunkt</button>
+            
         </form>
         <p>For å legge inn flere datoer, send inn nytt skjema.</p>
     </main>
