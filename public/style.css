@@ -1,113 +1,168 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 body {
-    margin: 0;
-    font-family: "Montserrat", sans-serif;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
-    
+
 nav {
-    display: flex;
-    justify-content: center;
-    width: 100vw;
-    background-color: rgb(246, 246, 246);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  background-color: rgb(246, 246, 246);
 }
 
 #logo {
-    width: 200px;
+  width: 200px;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
 }
 
 main {
-    display: flex;
-    gap: 5px;
-    width: 50vw;
-    margin: auto;
-    flex-direction: column;
-    flex: 1;
+  display: flex;
+  gap: 5px;
+  width: 50vw;
+  margin: auto;
+  flex-direction: column;
+  flex: 1;
 }
 
 .submitted-page {
-    text-align: center;
-    margin-top: 50px;
+  text-align: center;
+  margin-top: 50px;
 }
 
 .patience {
-    font-style: italic;
-    font-size: 1em;
+  font-style: italic;
+  font-size: 1em;
 }
 
 .underline {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .velg-tidsrom {
-    margin-top: 20px;
-    margin-bottom: 0;
-    font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 0;
+  font-weight: bold;
 }
 
 button {
-    display: block;
-    margin: auto;
-    margin-top: 30px;
-    width: 20vw;
-    height: 40px;
-    background-color: #1E6B3A;
-    border-radius: 10px;
-    border-width: 1px;
-    font-family: "Montserrat", sans-serif;
-    font-weight: bold;
-    color: white;
+  display: block;
+  background-color: #1e6b3a;
+}
+
+.form-submit {
+  margin-top: 30px;
+  width: 20vw;
+  height: 40px;
+  border-radius: 10px;
+  border-width: 1px;
+  background-color: #1e6b3a;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  color: white;
 }
 
 .line {
-    height: 1px;
-    width: 100%;
-    background-color: #1E6B3A;
-    margin: auto;
+  height: 1px;
+  width: 100%;
+  background-color: #1e6b3a;
+  margin: auto;
 }
 
 button:hover {
-    background-color: #254832;
-    color: white;
-    transition: background-color 0.3s, color 0.3s;
-    cursor: pointer;
+  background-color: #254832;
+  color: white;
+  transition: background-color 0.3s, color 0.3s;
+  cursor: pointer;
 }
 
 footer {
-    display: flex;
-    height: 60px;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    font-weight: bold;
-    background-color: rgb(246, 246, 246);
-
+  display: flex;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-weight: bold;
+  background-color: rgb(246, 246, 246);
 }
 
 .github {
-    width: 30px;
+  width: 30px;
+}
+
+iframe {
+    display: block;
+    width: 90vw;
+    height: 60vh;
+    margin: auto;
+}
+
+/* Tab content */
+
+.tablinks {
+  background-color: #1e6b3a;
+  color: white;
+  padding: 14px 16px;
+  border: none;
+  cursor: pointer;
+  font-size: 17px;
+  flex: 1;
+  text-align: center;
+}
+
+.tab {
+  overflow: hidden;
+  display: flex;
+  width: 100vw;
+  margin: auto;
+}
+
+.tabcontent {
+  display: none;
+  margin: 20px 0 20px 0;
+  animation: fadeEffect 0.7s; /* Fading effect takes 1 second */
+}
+
+.active {
+  background-color: #254832;
+}
+
+@keyframes fadeEffect {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @media (max-width: 600px) {
-    main {
-        width: 90vw;
-    }
+  main {
+    width: 90vw;
+  }
 
-    #logo {
-        width: 150px;
-    }
+  .tab {
+    width: 80vw;
+    gap: 10vw;
+  }
 
-    button {
-        width: 90vw;
-    }
+  #logo {
+    width: 150px;
+  }
+
+  button {
+    width: 90vw;
+  }
 }
