@@ -60,7 +60,7 @@ let entries = JSON.parse(
         renderEntries();
       });
 
-      document.getElementById("submit-form").addEventListener("click", () => {
+    /*   document.getElementById("submit-form").addEventListener("click", () => {
         if (entries.length === 0) {
           alert("Du må legge til minst ett tidspunkt før du sender inn.");
           return;
@@ -77,4 +77,4 @@ let entries = JSON.parse(
 
         document.getElementById("all-entries").value = formatted;
         localStorage.removeItem("availabilityEntries");
-      });
+      }); */
