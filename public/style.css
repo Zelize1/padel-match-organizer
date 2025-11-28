@@ -10,7 +10,9 @@ body {
 
 nav {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   width: 100vw;
   background-color: rgb(246, 246, 246);
 }
@@ -55,20 +57,18 @@ main {
   font-weight: bold;
 }
 
-.form-buttons {
-  display: flex;
-  gap: 10px;
-}
-
 button {
   display: block;
-  margin: auto;
+  background-color: #1e6b3a;
+}
+
+.form-submit {
   margin-top: 30px;
   width: 20vw;
   height: 40px;
-  background-color: #1e6b3a;
   border-radius: 10px;
   border-width: 1px;
+  background-color: #1e6b3a;
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
   color: white;
@@ -102,46 +102,60 @@ footer {
   width: 30px;
 }
 
-#entries-list li {
-  background-color: #f9f9f9;
-  margin-bottom: 4px;
+iframe {
+    display: block;
+    width: 90vw;
+    height: 60vh;
+    margin: auto;
 }
 
-#entries-list {
-  list-style: none;
-  padding: 0;
-}
+/* Tab content */
 
-#entries-list li {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 4px 6px;
-  border-bottom: 1px solid #ddd;
-}
-
-#entries-list li:last-child {
-  border-bottom: none;
-}
-.delete-entry {
-  all: unset; /* Completely resets any inherited styles */
+.tablinks {
+  background-color: #1e6b3a;
+  color: white;
+  padding: 14px 16px;
+  border: none;
   cursor: pointer;
-  font-size: 1.6em;
-  color: red;
-  padding: 0 4px;
-  display: flex;
-  align-items: center;
+  font-size: 17px;
+  flex: 1;
+  text-align: center;
 }
 
-.delete-entry:hover {
-  font-weight: bold;
-  background: none;
-  color: red;
+.tab {
+  overflow: hidden;
+  display: flex;
+  width: 100vw;
+  margin: auto;
+}
+
+.tabcontent {
+  display: none;
+  margin: 20px 0 20px 0;
+  animation: fadeEffect 0.7s; /* Fading effect takes 1 second */
+}
+
+.active {
+  background-color: #254832;
+}
+
+@keyframes fadeEffect {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @media (max-width: 600px) {
   main {
     width: 90vw;
+  }
+
+  .tab {
+    width: 80vw;
+    gap: 10vw;
   }
 
   #logo {
