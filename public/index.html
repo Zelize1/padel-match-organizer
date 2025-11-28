@@ -16,168 +16,98 @@
       />
     </nav>
 
-    <main>
-      <h1>Legg inn når du kan spille</h1>
-      <form
-        action="https://formsubmit.co/bfa53214c74426c1c2f1d949a66c5ebb"
-        method="POST"
+    <!-- Tabs -->
+    <div class="tab">
+      <button
+        class="tablinks"
+        onclick="openTab(event, 'paamelding')"
+        id="defaultOpen"
       >
-        <input
-          type="hidden"
-          name="_next"
-          value="https://padel-matching-ddb11.firebaseapp.com/submitted.html"
-        />
-        <input type="hidden" name="_captcha" value="false" />
-
-        <!-- This will hold all entries when submitting -->
-        <input type="hidden" name="all-entries" id="all-entries" />
-
-        <label for="name">Fornavn:</label>
-        <input type="text" id="name" required />
-
-        <label for="date">Dato:</label>
-        <input type="date" id="date" name="date" required />
-
-        <p class="velg-tidsrom">Velg tidsrom</p>
-        <label for="time-start">Fra</label>
-        <input type="time" id="time-start" required />
-
-        <label for="time-end">Til</label>
-        <input type="time" id="time-end" name="time-end" required />
-
-        <label for="message">Notat</label>
-        <textarea id="message" name="message"></textarea>
-
-        <div class="form-buttons">
-          <button type="button" id="add-entry">Legg til</button>
-          <button type="submit" id="submit-form">Send inn tidspunkt</button>
-        </div>
-      </form>
-      <div class="entries">
-        <h2>Dine påmeldte tidspunkt:</h2>
-        <ul id="entries-list">
-          <!-- Entries will be displayed here -->
-        </ul>
-      </div>
-      <p>
-        Hvis du skal sende inn kun et tidspunkt, trykk på "Send inn tidspunkt". <br />
-        Når du har lagt til det siste tidspunktet, trykk "Send inn tidspunkt" (altså ikke trykk "Legg til"),
-        for skjemaet kan ikke sendes uten at det står noe i hvert felt.</p>
-      
-       <p><span class="patience">
-          Siden jeg bruker en gratisløsning for skjemaet, så kan det ta litt tid
-          før skjemaet blir sendt.
-          <span class="underline">Vær tålmodig.</span></span
+        Påmelding
+      </button>
+      <button class="tablinks" onclick="openTab(event, 'info')">
+        Informasjon
+      </button>
+      <button class="tablinks" onclick="openTab(event, 'kalender')">
+        Kalender
+      </button>
+    </div>
+    
+    <main>
+      <!-- Signup form -->
+      <div id="paamelding" class="tabcontent">
+        <h1>Legg inn når du kan spille</h1>
+        <form
+          action="https://formsubmit.co/bfa53214c74426c1c2f1d949a66c5ebb"
+          method="POST"
         >
-      </p>
+          <input
+            type="hidden"
+            name="_next"
+            value="https://padel-matching-ddb11.firebaseapp.com/submitted.html"
+          />
+          <input type="hidden" name="_captcha" value="false" />
+          <label for="name">Fornavn:</label>
+          <input type="text" id="name" name="name" required />
 
-      <p>
-        Skjemaet blir sendt til meg på e-post, deretter fører jeg opp i
-        <a
-          href="https://docs.google.com/spreadsheets/d/1xPUL1TCHZ1C0mqsJKx0AfNIoQCEfh0ol4V7x9zu3WOQ/edit?usp=sharing"
-          target="_blank"
-          >Google Sheets</a
-        >. Får se om det er mulig på sikt å få en slags integrasjon med Google
-        Calendar en dag, hvis jeg gidder.
-      </p>
-      <div class="line"></div>
-      <h3>
-        NB! Når jeg ser at jeg har fått inn 4 påmeldte (inkl meg) i samme
-        tidsrom, så booker jeg bane dersom det er ledig på Feel24. Jeg sender
-        melding i chatten om hvem som er med etter at jeg har booket bane. Vær
-        helt sikker på at du er ledig når du setter deg opp. Første mann til
-        mølla!
-      </h3>
-      <h3>Hvis du har sendt feil, send meg en melding, så kan jeg fikse.</h3>
+          <label for="date" name="">Dato:</label>
+          <input type="date" id="date" name="date" required />
+
+          <p class="velg-tidsrom">Velg tidsrom</p>
+          <label for="time">Fra</label>
+          <input type="time" id="time-start" name="time-start" required />
+
+          <label for="time">Til</label>
+          <input type="time" id="time-end" name="time-end" required />
+
+          <label for="message">Notat</label>
+          <textarea id="message" name="message"></textarea>
+          <button class="form-submit" type="submit">Send inn tidspunkt</button>
+        </form>
+        <p>
+          For å legge inn flere datoer, send inn nytt skjema.
+          <span class="patience"
+            >Siden jeg bruker en gratisløsning for skjemaet, så kan det ta litt
+            tid før skjemaet blir sendt.
+            <span class="underline">Vær tålmodig.</span></span
+          >
+        </p>
+      </div>
+      <!-- Info -->
+      <div id="info" class="tabcontent">
+        <p>
+          Skjemaet blir sendt til meg på e-post, deretter fører jeg opp i
+          <a
+            href="https://docs.google.com/spreadsheets/d/1xPUL1TCHZ1C0mqsJKx0AfNIoQCEfh0ol4V7x9zu3WOQ/edit?usp=sharing"
+            target="_blank"
+            >Google Sheets</a
+          >. Har også satt opp Google kalender nå.
+        </p>
+        <div class="line"></div>
+        <h3>
+          NB! Når jeg ser at jeg har fått inn 4 påmeldte (inkl meg) i samme
+          tidsrom, så booker jeg bane dersom det er ledig på Feel24. Jeg sender
+          melding i chatten om hvem som er med etter at jeg har booket bane. Vær
+          helt sikker på at du er ledig når du setter deg opp. Første mann til
+          mølla!
+        </h3>
+        <h3>Hvis du har sendt feil, send meg en melding, så kan jeg fikse.</h3>
+      </div>
+      
     </main>
+    
+    <!-- Calendar -->
+    <div id="kalender" class="tabcontent">
+        <iframe
+          src="https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=Europe%2FOslo&showPrint=0&title=Padelkalenderen&mode=WEEK&showCalendars=0&showTz=0&src=N2ZiZmNlMzljNGM4MzRjMGZjNTFiNDMwZWNlY2Q5ZGU2MGJhMGQwZDNlNWM0YzFlOWEwNjRkZWJlYjU3MDRiZkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%237986cb"
+        ></iframe>
+      </div>
     <footer>
       <p>Laget av Cecilie Hansen</p>
       <a href="https://github.com/Zelize1" target="_blank"
         ><img src="./assets/github-icon.png" alt="Github Logo" class="github"
       /></a>
     </footer>
-
-    <script>
-      let entries = JSON.parse(
-        localStorage.getItem("availabilityEntries") || "[]"
-      );
-
-      function renderEntries() {
-        const list = document.getElementById("entries-list");
-        list.innerHTML = "";
-
-        entries.forEach((e, index) => {
-          const li = document.createElement("li");
-          li.textContent = `${index + 1}. ${e.date} – ${e.timeStart} til ${
-            e.timeEnd
-          } (${e.message || "ingen notat"})`;
-
-          const btn = document.createElement("button");
-          btn.textContent = "×"; // Just an X now
-          btn.type = "button";
-          btn.classList.add("delete-entry");
-          btn.addEventListener("click", () => {
-            entries.splice(index, 1);
-            localStorage.setItem(
-              "availabilityEntries",
-              JSON.stringify(entries)
-            );
-            renderEntries();
-          });
-
-          li.appendChild(btn);
-          list.appendChild(li);
-        });
-      }
-
-      // Render existing entries at page load
-      renderEntries();
-
-      document.getElementById("add-entry").addEventListener("click", () => {
-        const entry = {
-          name: document.getElementById("name").value,
-          date: document.getElementById("date").value,
-          timeStart: document.getElementById("time-start").value,
-          timeEnd: document.getElementById("time-end").value,
-          message: document.getElementById("message").value,
-        };
-
-        if (!entry.name || !entry.date || !entry.timeStart || !entry.timeEnd) {
-          alert("Vennligst fyll ut alle nødvendige felter før du legger til.");
-          return;
-        }
-
-        entries.push(entry);
-        localStorage.setItem("availabilityEntries", JSON.stringify(entries));
-
-        // Clear only fields related to date/time
-        document.getElementById("date").value = "";
-        document.getElementById("time-start").value = "";
-        document.getElementById("time-end").value = "";
-        document.getElementById("message").value = "";
-
-        alert("Tidspunkt lagt til!");
-        renderEntries();
-      });
-
-      document.getElementById("submit-form").addEventListener("click", () => {
-        if (entries.length === 0) {
-          alert("Du må legge til minst ett tidspunkt før du sender inn.");
-          return;
-        }
-
-        const formatted = entries
-          .map(
-            (e, i) =>
-              `#${i + 1}\nNavn: ${e.name}\nDato: ${e.date}\nFra: ${
-                e.timeStart
-              }\nTil: ${e.timeEnd}\nNotat: ${e.message || "-"}`
-          )
-          .join("\n\n");
-
-        document.getElementById("all-entries").value = formatted;
-        localStorage.removeItem("availabilityEntries");
-      });
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
