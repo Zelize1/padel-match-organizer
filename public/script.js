@@ -20,3 +20,25 @@ function openTab(evt, tabName) {
 }
 
 document.getElementById("defaultOpen").click();
+
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+
+hamburger.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('open');
+  hamburger.textContent = isOpen ? '✖' : '☰';
+  hamburger.classList.toggle('open', isOpen); // <-- NEW
+  hamburger.blur();
+});
+
+mobileMenu.querySelectorAll('button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    hamburger.textContent = '☰';
+    hamburger.classList.remove('open'); // <-- reset color
+    hamburger.blur();
+  });
+});
+
+
+

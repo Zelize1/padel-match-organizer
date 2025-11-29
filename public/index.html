@@ -11,24 +11,26 @@
 
 <body>
   <nav>
+    <button id="hamburger" aria-label="Open menu">☰</button>
     <img src="./assets/logo-horizontal.png" alt="Padel racket logo" id="logo" />
   </nav>
 
-  <!-- Tabs -->
-  <div class="tab">
-    <button class="tablinks" onclick="openTab(event, 'paamelding')" id="defaultOpen">
-      Påmelding
-    </button>
-    <button class="tablinks" onclick="openTab(event, 'info')">
-      Informasjon
-    </button>
-    <button class="tablinks" onclick="openTab(event, 'sheets')">
-      Påmeldinger
-    </button>
-    <button class="tablinks" onclick="openTab(event, 'kalender')">
-      Kalender
-    </button>
+  <!-- Desktop tabs -->
+  <div class="tab desktop-menu">
+    <button class="tablinks" onclick="openTab(event, 'paamelding')" id="defaultOpen">Påmelding</button>
+    <button class="tablinks" onclick="openTab(event, 'info')">Informasjon</button>
+    <button class="tablinks" onclick="openTab(event, 'sheets')">Påmeldinger</button>
+    <button class="tablinks" onclick="openTab(event, 'kalender')">Kalender</button>
   </div>
+
+  <!-- Mobile menu (hidden by default) -->
+  <div id="mobile-menu" class="tab mobile-menu">
+    <button class="tablinks" onclick="openTab(event, 'paamelding')">Påmelding</button>
+    <button class="tablinks" onclick="openTab(event, 'info')">Informasjon</button>
+    <button class="tablinks" onclick="openTab(event, 'sheets')">Påmeldinger</button>
+    <button class="tablinks" onclick="openTab(event, 'kalender')">Kalender</button>
+  </div>
+
 
   <main>
     <!-- Signup form -->
