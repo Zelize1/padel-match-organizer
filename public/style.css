@@ -146,6 +146,7 @@ iframe {
   text-align: center;
   font-size: 0.9em;
 }
+
 /* Tab content */
 
 .tab-title {
@@ -227,6 +228,37 @@ iframe {
   color: red !important;
 }
 
+/* Initially, desktop menu is shown, mobile is hidden */
+.desktop-menu {
+  display: flex;
+}
+
+.mobile-menu {
+  display: none;
+  /* Only appears when open on mobile */
+}
+
+/* Hamburger button only on mobile */
+#hamburger {
+  display: none;
+  background: none;
+  font-size: 2rem;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  z-index: 1000;
+  width: 50px;
+  color: black;
+  transition: color 0.3s ease; /* Smooth change */
+}
+
+#hamburger.open {
+  color: white;
+  transition: color 0.3s ease;
+}
+
 @keyframes fadeEffect {
   from {
     opacity: 0;
@@ -242,8 +274,41 @@ iframe {
     width: 90vw;
   }
 
-  .tab {
+  .desktop-menu {
+    display: none;
+    /* Hide desktop version */
+  }
+
+  #hamburger {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+  }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100vw;
+    flex-direction: column;
+    background-color: #1e6b3a;
+    z-index: 999;
+    /* Slightly lower than hamburger */
+  }
+
+  /* When active */
+  #mobile-menu.open {
+    display: flex;
+  }
+
+  .mobile-menu button {
+    width: 100%;
+  }
+
+  .tab {
+    display: none;
   }
 
   #logo {
@@ -252,5 +317,14 @@ iframe {
 
   button {
     width: 90vw;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    background-color: rgb(246, 246, 246);
   }
 }
