@@ -22,6 +22,9 @@
     <button class="tablinks" onclick="openTab(event, 'info')">
       Informasjon
     </button>
+    <button class="tablinks" onclick="openTab(event, 'sheets')">
+      Påmeldinger
+    </button>
     <button class="tablinks" onclick="openTab(event, 'kalender')">
       Kalender
     </button>
@@ -58,17 +61,22 @@
           <button type="button" id="add-entry">Legg til</button>
           <button type="submit" id="submit-form">Send inn tidspunkt</button>
         </div>
+        <p id="one-sub">Skal du bare sende inn et tidspunkt, trykk kun på "Send inn tidspunkt"</p>
       </form>
 
-      <p>
-        Trykk på "Legg til" hvis du vil sende inn flere tidspunkt. For å kunne sende skjemaet, så må det siste som
-        legges inn i skjemaet bli sendt med "Send inn tidspunkt".
-        <br />
-        <span class="patience">Siden jeg bruker en gratisløsning for skjemaet, så kan det ta litt
-          tid før skjemaet blir sendt.
-          <span class="underline">Vær tålmodig.</span></span>
-      </p>
-
+      <div id="multi-times">
+        <h3>Hvordan legge til flere tidspunkt</h3>
+        <p>
+          «Trykk «Legg til» for å lagre et tidspunkt og legge inn et nytt.
+          For å sende inn alle tidspunktene må det siste tidspunktet sendes direkte med «Send inn» (ikke med «Legg
+          til»),
+          ellers har knappen ingenting å sende.»
+          <br />
+          <span class="patience">Siden jeg bruker en gratisløsning for skjemaet, så kan det ta litt
+            tid før skjemaet blir sendt.
+            <span class="underline">Vær tålmodig.</span></span>
+        </p>
+      </div>
       <div class="entries">
         <h2>Dine lagrede tidspunkt:</h2>
         <ul id="entries-list">
@@ -76,31 +84,39 @@
         </ul>
       </div>
 
-      
+
     </div>
     <!-- Info -->
     <div id="info" class="tabcontent">
       <h1>Informasjon om påmelding</h1>
       <p>
-        Skjemaet blir sendt til meg på e-post, deretter fører jeg opp i
-        <a href="https://docs.google.com/spreadsheets/d/1xPUL1TCHZ1C0mqsJKx0AfNIoQCEfh0ol4V7x9zu3WOQ/edit?usp=sharing"
-          target="_blank">Google Sheets</a>. Har også satt opp Google kalender nå.
+        Skjemaet blir sendt til meg på e-post, deretter fører jeg opp i Google Sheets (se <a href="#"
+          onclick="openTab(event, 'sheets')">"Påmeldinger"</a>-fanen). <br />
+        Jeg oppdaterer også kalenderen (se <a href="#" onclick="openTab(event, 'kalender')">"Kalender"</a>-fanen) når
+        jeg har booket bane.
       </p>
       <div class="line"></div>
       <h3>
         NB! Når jeg ser at jeg har fått inn 4 påmeldte (inkl meg) i samme
         tidsrom, så booker jeg bane dersom det er ledig på Feel24. Jeg sender
         melding i chatten om hvem som er med etter at jeg har booket bane. Vær
-        helt sikker på at du er ledig når du setter deg opp. Første mann til
+        helt sikker på at du er ledig i de tidsrommene som du setter deg opp på. Første mann/dame til
         mølla!
       </h3>
       <h3>Hvis du har sendt feil, send meg en melding, så kan jeg fikse.</h3>
     </div>
 
   </main>
+  <!-- Signups -->
 
+  <div id="sheets" class="tabcontent">
+    <h1 class="tab-title">Påmeldte</h1>
+    <iframe
+      src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRUxmL7XaxUN0KsWIUKfWNZ-kK76sVFVYBIaYMmLMwkpa8FFC_MO8jRbrFYgvVZB89cF2mxFKMl1jrO/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+  </div>
   <!-- Calendar -->
   <div id="kalender" class="tabcontent">
+    <h1 class="tab-title">Kalender</h1>
     <iframe
       src="https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=Europe%2FOslo&showPrint=0&title=Padelkalenderen&mode=WEEK&showCalendars=0&showTz=0&src=N2ZiZmNlMzljNGM4MzRjMGZjNTFiNDMwZWNlY2Q5ZGU2MGJhMGQwZDNlNWM0YzFlOWEwNjRkZWJlYjU3MDRiZkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%237986cb"></iframe>
   </div>
