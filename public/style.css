@@ -131,6 +131,16 @@ footer {
   background-color: rgb(246, 246, 246);
 }
 
+.youtube-link {
+  color: #1e6b3a;
+  font-weight: 600;
+}
+
+.youtube-link:hover {
+  color: #20412a;
+  text-decoration: none;
+}
+
 .github {
   width: 30px;
 }
