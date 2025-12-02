@@ -1,163 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Padel Matching</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/x-icon" href="./assets/icon.png" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Padel Matching</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" type="image/x-icon" href="./assets/icon.png" />
-</head>
+  <body>
+    <nav>
+      <button id="hamburger" aria-label="Open menu">☰</button>
+      <img
+        src="./assets/logo-horizontal.png"
+        alt="Padel racket logo"
+        id="logo"
+      />
+    </nav>
 
-<body>
-  <nav>
-    <button id="hamburger" aria-label="Open menu">☰</button>
-    <img src="./assets/logo-horizontal.png" alt="Padel racket logo" id="logo" />
-  </nav>
+    <!-- Desktop tabs -->
+    <div class="tab desktop-menu">
+      <button
+        class="tablinks"
+        onclick="openTab(event, 'paamelding')"
+        id="defaultOpen"
+      >
+        Påmelding
+      </button>
+      <button class="tablinks" onclick="openTab(event, 'info')">
+        Informasjon
+      </button>
+      <button class="tablinks" onclick="openTab(event, 'sheets')">
+        Påmeldinger
+      </button>
+      <button class="tablinks" onclick="openTab(event, 'kalender')">
+        Kalender
+      </button>
+      <button class="tablinks" onclick="openTab(event, 'rules')">Regler</button>
+    </div>
 
-  <!-- Desktop tabs -->
-  <div class="tab desktop-menu">
-    <button class="tablinks" onclick="openTab(event, 'paamelding')" id="defaultOpen">Påmelding</button>
-    <button class="tablinks" onclick="openTab(event, 'info')">Informasjon</button>
-    <button class="tablinks" onclick="openTab(event, 'sheets')">Påmeldinger</button>
-    <button class="tablinks" onclick="openTab(event, 'kalender')">Kalender</button>
-    <button class="tablinks" onclick="openTab(event, 'rules')">Regler</button>
-  </div>
+    <!-- Mobile menu (hidden by default) -->
+    <div id="mobile-menu" class="tab mobile-menu">
+      <button class="tablinks" onclick="openTab(event, 'paamelding')">
+        Påmelding
+      </button>
+      <button class="tablinks" onclick="openTab(event, 'info')">
+        Informasjon
+      </button>
+      <button class="tablinks" onclick="openTab(event, 'sheets')">
+        Påmeldinger
+      </button>
+      <button class="tablinks" onclick="openTab(event, 'kalender')">
+        Kalender
+      </button>
+      <button class="tablinks" onclick="openTab(event, 'rules')">Regler</button>
+    </div>
 
-  <!-- Mobile menu (hidden by default) -->
-  <div id="mobile-menu" class="tab mobile-menu">
-    <button class="tablinks" onclick="openTab(event, 'paamelding')">Påmelding</button>
-    <button class="tablinks" onclick="openTab(event, 'info')">Informasjon</button>
-    <button class="tablinks" onclick="openTab(event, 'sheets')">Påmeldinger</button>
-    <button class="tablinks" onclick="openTab(event, 'kalender')">Kalender</button>
-    <button class="tablinks" onclick="openTab(event, 'rules')">Regler</button>
-  </div>
+    <main>
+      <!-- Signup form -->
+      <div id="paamelding" class="tabcontent">
+        <h1>Legg inn når du kan spille</h1>
+        <form
+          action="https://formsubmit.co/bfa53214c74426c1c2f1d949a66c5ebb"
+          method="POST"
+        >
+          <input
+            type="hidden"
+            name="_next"
+            value="https://padel-matching-ddb11.firebaseapp.com/submitted.html"
+          />
+          <input type="hidden" name="_captcha" value="false" />
 
+          <!-- This will hold all entries when submitting -->
+          <input type="hidden" name="all-entries" id="all-entries" />
 
-  <main>
-    <!-- Signup form -->
-    <div id="paamelding" class="tabcontent">
-      <h1>Legg inn når du kan spille</h1>
-      <form action="https://formsubmit.co/bfa53214c74426c1c2f1d949a66c5ebb" method="POST">
-        <input type="hidden" name="_next" value="https://padel-matching-ddb11.firebaseapp.com/submitted.html" />
-        <input type="hidden" name="_captcha" value="false" />
+          <label for="name">Fornavn:</label>
+          <input type="text" id="name" name="name" required />
 
-        <!-- This will hold all entries when submitting -->
-        <input type="hidden" name="all-entries" id="all-entries" />
+          <label for="date">Dato:</label>
+          <input type="date" id="date" name="date" required />
 
-        <label for="name">Fornavn:</label>
-        <input type="text" id="name" name="name" required />
+          <p class="velg-tidsrom">Velg tidsrom</p>
+          <label for="time-start">Fra</label>
+          <input type="time" id="time-start" name="time-start" required />
 
-        <label for="date">Dato:</label>
-        <input type="date" id="date" name="date" required />
+          <label for="time-end">Til</label>
+          <input type="time" id="time-end" name="time-end" required />
 
-        <p class="velg-tidsrom">Velg tidsrom</p>
-        <label for="time-start">Fra</label>
-        <input type="time" id="time-start" name="time-start" required />
+          <label for="message">Notat</label>
+          <textarea id="message" name="message"></textarea>
 
-        <label for="time-end">Til</label>
-        <input type="time" id="time-end" name="time-end" required />
+          <div class="form-buttons">
+            <button type="button" id="add-entry">Legg til</button>
+            <button type="submit" id="submit-form">Send inn tidspunkt</button>
+          </div>
+          <p id="one-sub">
+            Skal du bare sende inn et tidspunkt, trykk kun på "Send inn
+            tidspunkt"
+          </p>
+        </form>
 
-        <label for="message">Notat</label>
-        <textarea id="message" name="message"></textarea>
-
-        <div class="form-buttons">
-          <button type="button" id="add-entry">Legg til</button>
-          <button type="submit" id="submit-form">Send inn tidspunkt</button>
+        <div id="multi-times">
+          <h3>Hvordan legge til flere tidspunkt</h3>
+          <p>
+            «Trykk «Legg til» for å lagre et tidspunkt og legge inn et nytt. For
+            å sende inn alle tidspunktene må det siste tidspunktet sendes
+            direkte med «Send inn» (ikke med «Legg til»), ellers har knappen
+            ingenting å sende.»
+            <br />
+            <span class="patience"
+              >Siden jeg bruker en gratisløsning for skjemaet, så kan det ta
+              litt tid før skjemaet blir sendt.
+              <span class="underline">Vær tålmodig.</span></span
+            >
+          </p>
         </div>
-        <p id="one-sub">Skal du bare sende inn et tidspunkt, trykk kun på "Send inn tidspunkt"</p>
-      </form>
-
-      <div id="multi-times">
-        <h3>Hvordan legge til flere tidspunkt</h3>
+        <div class="entries">
+          <h2>Dine lagrede tidspunkt:</h2>
+          <ul id="entries-list">
+            <!-- Entries will be displayed here -->
+          </ul>
+        </div>
+      </div>
+      <!-- Info -->
+      <div id="info" class="tabcontent">
+        <h1>Informasjon om påmelding</h1>
         <p>
-          «Trykk «Legg til» for å lagre et tidspunkt og legge inn et nytt.
-          For å sende inn alle tidspunktene må det siste tidspunktet sendes direkte med «Send inn» (ikke med «Legg
-          til»),
-          ellers har knappen ingenting å sende.»
-          <br />
-          <span class="patience">Siden jeg bruker en gratisløsning for skjemaet, så kan det ta litt
-            tid før skjemaet blir sendt.
-            <span class="underline">Vær tålmodig.</span></span>
+          Skjemaet blir sendt til meg på e-post, deretter fører jeg opp i Google
+          Sheets (se
+          <a href="#" onclick="openTab(event, 'sheets')">"Påmeldinger"</a
+          >-fanen). <br />
+          Jeg oppdaterer også kalenderen (se
+          <a href="#" onclick="openTab(event, 'kalender')">"Kalender"</a>-fanen)
+          når jeg har booket bane.
         </p>
+        <div class="line"></div>
+        <h3>
+          NB! Når jeg ser at jeg har fått inn 4 påmeldte (inkl meg) i samme
+          tidsrom, så booker jeg bane dersom det er ledig på Feel24. Jeg sender
+          melding i chatten om hvem som er med etter at jeg har booket bane. Vær
+          helt sikker på at du er ledig i de tidsrommene som du setter deg opp
+          på. Første mann/dame til mølla!
+        </h3>
+        <h3>Hvis du har sendt feil, send meg en melding, så kan jeg fikse.</h3>
       </div>
-      <div class="entries">
-        <h2>Dine lagrede tidspunkt:</h2>
-        <ul id="entries-list">
-          <!-- Entries will be displayed here -->
-        </ul>
-      </div>
 
+      <!-- Padel rules -->
+      <div id="rules" class="tabcontent">
+        <h1>Regler</h1>
 
-    </div>
-    <!-- Info -->
-    <div id="info" class="tabcontent">
-      <h1>Informasjon om påmelding</h1>
-      <p>
-        Skjemaet blir sendt til meg på e-post, deretter fører jeg opp i Google Sheets (se <a href="#"
-          onclick="openTab(event, 'sheets')">"Påmeldinger"</a>-fanen). <br />
-        Jeg oppdaterer også kalenderen (se <a href="#" onclick="openTab(event, 'kalender')">"Kalender"</a>-fanen) når
-        jeg har booket bane.
-      </p>
-      <div class="line"></div>
-      <h3>
-        NB! Når jeg ser at jeg har fått inn 4 påmeldte (inkl meg) i samme
-        tidsrom, så booker jeg bane dersom det er ledig på Feel24. Jeg sender
-        melding i chatten om hvem som er med etter at jeg har booket bane. Vær
-        helt sikker på at du er ledig i de tidsrommene som du setter deg opp på. Første mann/dame til
-        mølla!
-      </h3>
-      <h3>Hvis du har sendt feil, send meg en melding, så kan jeg fikse.</h3>
-    </div>
-
-    <!-- Padel rules -->
-    <div id="rules" class="tabcontent">
-      <h1>Regler</h1>
-
-      <h2>Serve</h2>
-        <p>Start bak bakerste linje (service line). Ballen skal droppes i bakken og slåes fra midjehøyde eller lavere. Serven
-          må
-          slås diagonalt
-          over til motstanderens serveboks. Ballen må sprette en gang i bakken før den
-          returneres.</p>
+        <h2>Serve</h2>
+        <p>
+          Start bak bakerste linje (service line). Ballen skal droppes i bakken
+          og slåes fra midjehøyde eller lavere. Serven må slås diagonalt over
+          til motstanderens serveboks. Ballen må sprette en gang i bakken før
+          den returneres.
+        </p>
         <h4>Ballen er inne når:</h4>
         <ul>
           <li>Den lander innenfor motstanderens banehalvdel</li>
-          <li>Den treffer veggen etter å ha truffet bakken innenfor motstanderens banehalvdel</li>
+          <li>
+            Den treffer veggen etter å ha truffet bakken innenfor motstanderens
+            banehalvdel
+          </li>
         </ul>
         <h4>Ballen er ute når:</h4>
         <ul>
           <li>Den treffer veggen/gitteret før den har truffet bakken</li>
           <li>Den treffer treffer bakken og deretter går i gitteret</li>
         </ul>
-        <p>Treffer ballen nettet er det en feilserve og man for et nytt forsøk. Totalt har man to forsøk på serve.
-          Feiler man på to server får motstanderen poeng.</p>
-        <a href="https://www.youtube.com/watch?v=-E_3soYXPm0" class="youtube-link">Se gjerne denne videon som forklarer reglene rundt serve</a>
+        <p>
+          Treffer ballen nettet er det en feilserve og man for et nytt forsøk.
+          Totalt har man to forsøk på serve. Feiler man på to server får
+          motstanderen poeng.
+        </p>
+        <a
+          href="https://www.youtube.com/watch?v=-E_3soYXPm0"
+          class="youtube-link"
+          >Se gjerne denne videon som forklarer reglene rundt serve</a
+        >
+
+        <h2>Bruk av vegger</h2>
+        <p>
+          I padel kan man spille med veggene, og med veggspill er posisjonering
+          spesielt viktig.
+        </p>
+        <p>
+          Ballen kan sprette i veggen etter å ha truffet bakken innenfor
+          motstanderens banehalvdel. Den kan da gå enten i én vegg, eller en
+          kombinasjon av bakvegg og sidevegg. Når du skal returnere ballen, så har du også lov til å skyte ballen i egen vegg (både bakvegg og sidevegg) før den går over nettet.
+        </p>
+        <p>Dersom ballen treffer veggen før den treffer bakken, er det ballen ute og det blir poeng til motsatt lag.</p>
+
+        <h2>Bruk av gitter</h2>
+        <p>I spill, så har ballen lov til å treffe gitteret på motsatt banehalvdel etter den har truffet bakken først. Men likt som glassveggen, treffer du gitteret før ballen treffer bakken først, da er ballen ute.</p>
+        <p>Ulikt fra glassveggen er at dersom du skyter ballen på retur i gitteret på din egne banehalvdel, da er ballen ute.</p>
+      </div>
+    </main>
+
+    <!-- Signups -->
+    <div id="sheets" class="tabcontent">
+      <h1 class="tab-title">Påmeldte</h1>
+      <iframe
+        src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRUxmL7XaxUN0KsWIUKfWNZ-kK76sVFVYBIaYMmLMwkpa8FFC_MO8jRbrFYgvVZB89cF2mxFKMl1jrO/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"
+      ></iframe>
+    </div>
+    <!-- Calendar -->
+    <div id="kalender" class="tabcontent">
+      <h1 class="tab-title">Kalender</h1>
+      <iframe
+        src="https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=Europe%2FOslo&showPrint=0&title=Padelkalenderen&mode=WEEK&showCalendars=0&showTz=0&src=N2ZiZmNlMzljNGM4MzRjMGZjNTFiNDMwZWNlY2Q5ZGU2MGJhMGQwZDNlNWM0YzFlOWEwNjRkZWJlYjU3MDRiZkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%237986cb"
+      ></iframe>
     </div>
 
-  </main>
-  <!-- Signups -->
-
-  <div id="sheets" class="tabcontent">
-    <h1 class="tab-title">Påmeldte</h1>
-    <iframe
-      src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRUxmL7XaxUN0KsWIUKfWNZ-kK76sVFVYBIaYMmLMwkpa8FFC_MO8jRbrFYgvVZB89cF2mxFKMl1jrO/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
-  </div>
-  <!-- Calendar -->
-  <div id="kalender" class="tabcontent">
-    <h1 class="tab-title">Kalender</h1>
-    <iframe
-      src="https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=Europe%2FOslo&showPrint=0&title=Padelkalenderen&mode=WEEK&showCalendars=0&showTz=0&src=N2ZiZmNlMzljNGM4MzRjMGZjNTFiNDMwZWNlY2Q5ZGU2MGJhMGQwZDNlNWM0YzFlOWEwNjRkZWJlYjU3MDRiZkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%237986cb"></iframe>
-  </div>
-
-
-  <footer>
-    <p>Laget av Cecilie Hansen</p>
-    <a href="https://github.com/Zelize1" target="_blank"><img src="./assets/github-icon.png" alt="Github Logo"
-        class="github" /></a>
-  </footer>
-  <script src="multi.js"></script>
-  <script src="script.js"></script>
-</body>
-
+    <footer>
+      <p>Laget av Cecilie Hansen</p>
+      <a href="https://github.com/Zelize1" target="_blank"
+        ><img src="./assets/github-icon.png" alt="Github Logo" class="github"
+      /></a>
+    </footer>
+    <script src="multi.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>
