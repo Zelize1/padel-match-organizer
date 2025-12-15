@@ -59,23 +59,25 @@
 
 
         <!-- This will hold all entries when submitting -->
-        <input type="hidden" name="all-entries" id="all-entries" />
+        <input type="hidden" name="all_entries" id="all-entries" />
 
         <label for="name">Fornavn:</label>
-        <input type="text" id="name" name="name" required/>
+        <input type="text" id="name" name="name" required />
 
         <label for="date">Dato:</label>
         <input type="date" id="date" name="date" />
 
         <p class="velg-tidsrom">Velg tidsrom</p>
-        <label for="time-start">Fra</label>
-        <input type="time" id="time-start" name="time-start" />
 
-        <label for="time-end">Til</label>
-        <input type="time" id="time-end" name="time-end" />
+        <label for="time_start">Fra</label>
+        <input type="time" id="time_start" name="time_start" />
+
+        <label for="time_end">Til</label>
+        <input type="time" id="time_end" name="time_end" />
 
         <label for="message">Notat</label>
         <textarea id="message" name="message"></textarea>
+
 
         <div class="form-buttons">
           <button type="button" id="add-entry"><span id="plus">+</span> Legg til</button>
@@ -88,7 +90,7 @@
         <ul id="entries-list"></ul>
       </div>
 
-    <!--   <p id="multi-times">
+      <!--   <p id="multi-times">
         <span class="patience">Siden jeg bruker en gratisløsning for skjemaet, så kan det ta
           litt tid før skjemaet blir sendt.
           <span class="underline">Vær tålmodig.</span></span>
