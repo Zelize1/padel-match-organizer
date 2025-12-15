@@ -40,5 +40,80 @@ mobileMenu.querySelectorAll('button').forEach(btn => {
   });
 });
 
+window.onload = function () {
+  // Reset the form fields when the page loads
+  document.getElementById("form").reset();
+};
+
+
+const form = document.querySelector("#form");
+const allEntriesInput = document.getElementById("all-entries");
+
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const submitButton = document.querySelector("#submit-form");
+  submitButton.disabled = true;
+  submitButton.textContent = "Sender...";
+  const name = document.getElementById("name").value;
+
+  let entriesToSend = [];
+
+  if (typeof entries !== "undefined" && entries.length > 0) {
+    entriesToSend = entries;
+  } else {
+    entriesToSend = [
+      {
+        date: document.getElementById("date").value,
+        timeStart: document.getElementById("time-start").value,
+        timeEnd: document.getElementById("time-end").value,
+        message: document.getElementById("message").value,
+      },
+    ];
+  }
+
+  const formattedEntries = `
+Navn: ${name}
+
+${entriesToSend
+      .map(
+        (e, i) =>
+          `Tidspunkt ${i + 1}
+Dato: ${e.date}
+Fra: ${e.timeStart}
+Til: ${e.timeEnd}
+Notat: ${e.message || "-"}`
+      )
+      .join("\n\n")}
+`;
+
+
+  allEntriesInput.value = formattedEntries;
+  localStorage.removeItem("availabilityEntries");
+  document.getElementById("date").value = "";
+  document.getElementById("time-start").value = "";
+  document.getElementById("time-end").value = "";
+  document.getElementById("message").value = "";
+
+  try {
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: new FormData(form),
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      window.location.href = "/public/submitted.html";
+    } else {
+      throw new Error("Submission failed");
+    }
+  } catch (error) {
+    alert("Kunne ikke sende skjemaet. Prøv igjen.");
+    submitButton.disabled = false;
+    submitButton.textContent = "Send inn alle tidspunkter";
+  }
+});
 
 
