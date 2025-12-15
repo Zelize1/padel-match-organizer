@@ -40,5 +40,40 @@ mobileMenu.querySelectorAll('button').forEach(btn => {
   });
 });
 
+window.onload = function () {
+  // Reset the form fields when the page loads
+  document.getElementById("form").reset();
+};
 
+
+const form = document.querySelector("#form");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const submitButton = document.querySelector("#submit-form");
+  submitButton.disabled = true;
+  submitButton.textContent = "Sender...";
+
+  try {
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: new FormData(form),
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      window.location.href = "/public/submitted.html";
+    } else {
+      alert("Noe gikk galt. Prøv igjen.");
+      submitButton.disabled = false;
+      submitButton.textContent = "Send inn tidspunkt";
+    }
+  } catch (error) {
+    alert("Kunne ikke sende skjemaet. Sjekk nettverket.");
+    submitButton.disabled = false;
+    submitButton.textContent = "Send inn tidspunkt";
+  }
+});
 
