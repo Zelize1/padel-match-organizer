@@ -101,12 +101,13 @@ Notat: ${e.message || "-"}`
   allEntriesInput.value = formattedEntries;
   localStorage.removeItem("availabilityEntries");
 
-  const formData = new FormData(form);
+  document.getElementById("date").disabled = true;
+  document.getElementById("time_start").disabled = true;
+  document.getElementById("time_end").disabled = true;
+  document.getElementById("message").disabled = true;
 
-  document.getElementById("date").value = "";
-  document.getElementById("time_start").value = "";
-  document.getElementById("time_end").value = "";
-  document.getElementById("message").value = "";
+
+  const formData = new FormData(form);
 
   for (const [key, value] of formData.entries()) {
     console.log(key);
@@ -128,9 +129,16 @@ Notat: ${e.message || "-"}`
     }
   } catch (error) {
     alert("Kunne ikke sende skjemaet. Prøv igjen.");
+
+    document.getElementById("date").disabled = false;
+    document.getElementById("time_start").disabled = false;
+    document.getElementById("time_end").disabled = false;
+    document.getElementById("message").disabled = false;
+
     submitButton.disabled = false;
     submitButton.textContent = "Send inn alle tidspunkter";
   }
+
 });
 
 
