@@ -57,10 +57,16 @@ form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const submitButton = document.querySelector("#submit-form");
+
+  const name = document.getElementById("name").value.trim();
+
+  if (!name) {
+    alert("Vennligst fyll inn navn før innsending.");
+    return;
+  }
+
   submitButton.disabled = true;
   submitButton.textContent = "Sender...";
-  const name = document.getElementById("name").value;
-
   let entriesToSend = [];
 
   if (typeof entries !== "undefined" && entries.length > 0) {
@@ -94,6 +100,9 @@ Notat: ${e.message || "-"}`
 
   allEntriesInput.value = formattedEntries;
   localStorage.removeItem("availabilityEntries");
+
+  const formData = new FormData(form);
+
   document.getElementById("date").value = "";
   document.getElementById("time-start").value = "";
   document.getElementById("time-end").value = "";
@@ -102,8 +111,9 @@ Notat: ${e.message || "-"}`
   try {
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
-      body: new FormData(form),
+      body: formData,
     });
+
 
     const data = await response.json();
 
