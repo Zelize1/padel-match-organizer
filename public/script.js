@@ -41,9 +41,12 @@ mobileMenu.querySelectorAll('button').forEach(btn => {
 });
 
 window.onload = function () {
-  // Reset the form fields when the page loads
-  document.getElementById("form").reset();
+  document.getElementById("date").value = "";
+  document.getElementById("time-start").value = "";
+  document.getElementById("time-end").value = "";
+  document.getElementById("message").value = "";
 };
+
 
 
 const form = document.querySelector("#form");
