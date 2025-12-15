@@ -56,58 +56,43 @@
       <form action="https://api.web3forms.com/submit" method="POST" id="form">
         <input type="hidden" name="access_key" value="ea5052c1-a2a7-4bb3-a237-3cd70fa6b9d4">
         <input type="hidden" name="_captcha" value="false" />
-       
-        
+
+
         <!-- This will hold all entries when submitting -->
         <input type="hidden" name="all-entries" id="all-entries" />
 
         <label for="name">Fornavn:</label>
-        <input type="text" id="name" name="name" required />
+        <input type="text" id="name" name="name" />
 
         <label for="date">Dato:</label>
-        <input type="date" id="date" name="date" required />
+        <input type="date" id="date" name="date" />
 
         <p class="velg-tidsrom">Velg tidsrom</p>
         <label for="time-start">Fra</label>
-        <input type="time" id="time-start" name="time-start" required />
+        <input type="time" id="time-start" name="time-start" />
 
         <label for="time-end">Til</label>
-        <input type="time" id="time-end" name="time-end" required />
+        <input type="time" id="time-end" name="time-end" />
 
         <label for="message">Notat</label>
         <textarea id="message" name="message"></textarea>
 
         <div class="form-buttons">
-          <!-- <button type="button" id="add-entry">Legg til</button> -->
-          <button type="submit" id="submit-form">Send inn tidspunkt</button>
+          <button type="button" id="add-entry"><span id="plus">+</span> Legg til</button>
+          <button type="submit" id="submit-form" disabled>Send inn</button>
         </div>
-        
-
-       <!--  <p id="one-sub">
-          Skal du bare sende inn et tidspunkt, trykk kun på "Send inn
-          tidspunkt"
-        </p> -->
       </form>
 
-      <div id="multi-times">
-        <!-- <h3>Hvordan legge til flere tidspunkt</h3> -->
-        <p>
-         <!--  «Trykk «Legg til» for å lagre et tidspunkt og legge inn et nytt. For
-          å sende inn alle tidspunktene må det siste tidspunktet sendes
-          direkte med «Send inn» (ikke med «Legg til»), ellers har knappen
-          ingenting å sende.»
-          <br /> -->
-          <span class="patience">Siden jeg bruker en gratisløsning for skjemaet, så kan det ta
-            litt tid før skjemaet blir sendt.
-            <span class="underline">Vær tålmodig.</span></span>
-        </p>
+      <div class="entries">
+        <h3>Dine valgte tidspunkter</h3>
+        <ul id="entries-list"></ul>
       </div>
-      <!-- <div class="entries">
-        <h2>Dine lagrede tidspunkt:</h2>
-        <ul id="entries-list">
-           Entries will be displayed here
-        </ul>
-      </div> -->
+
+    <!--   <p id="multi-times">
+        <span class="patience">Siden jeg bruker en gratisløsning for skjemaet, så kan det ta
+          litt tid før skjemaet blir sendt.
+          <span class="underline">Vær tålmodig.</span></span>
+      </p> -->
     </div>
     <!-- Info -->
     <div id="info" class="tabcontent">

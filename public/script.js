@@ -47,6 +47,8 @@ window.onload = function () {
 
 
 const form = document.querySelector("#form");
+const allEntriesInput = document.getElementById("all-entries");
+
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -54,6 +56,45 @@ form.addEventListener("submit", async (e) => {
   const submitButton = document.querySelector("#submit-form");
   submitButton.disabled = true;
   submitButton.textContent = "Sender...";
+  const name = document.getElementById("name").value;
+
+  let entriesToSend = [];
+
+  if (typeof entries !== "undefined" && entries.length > 0) {
+    entriesToSend = entries;
+  } else {
+    entriesToSend = [
+      {
+        date: document.getElementById("date").value,
+        timeStart: document.getElementById("time-start").value,
+        timeEnd: document.getElementById("time-end").value,
+        message: document.getElementById("message").value,
+      },
+    ];
+  }
+
+  const formattedEntries = `
+Navn: ${name}
+
+${entriesToSend
+      .map(
+        (e, i) =>
+          `Tidspunkt ${i + 1}
+Dato: ${e.date}
+Fra: ${e.timeStart}
+Til: ${e.timeEnd}
+Notat: ${e.message || "-"}`
+      )
+      .join("\n\n")}
+`;
+
+
+  allEntriesInput.value = formattedEntries;
+  localStorage.removeItem("availabilityEntries");
+  document.getElementById("date").value = "";
+  document.getElementById("time-start").value = "";
+  document.getElementById("time-end").value = "";
+  document.getElementById("message").value = "";
 
   try {
     const response = await fetch("https://api.web3forms.com/submit", {
@@ -66,14 +107,13 @@ form.addEventListener("submit", async (e) => {
     if (data.success) {
       window.location.href = "/public/submitted.html";
     } else {
-      alert("Noe gikk galt. Prøv igjen.");
-      submitButton.disabled = false;
-      submitButton.textContent = "Send inn tidspunkt";
+      throw new Error("Submission failed");
     }
   } catch (error) {
-    alert("Kunne ikke sende skjemaet. Sjekk nettverket.");
+    alert("Kunne ikke sende skjemaet. Prøv igjen.");
     submitButton.disabled = false;
-    submitButton.textContent = "Send inn tidspunkt";
+    submitButton.textContent = "Send inn alle tidspunkter";
   }
 });
+
 

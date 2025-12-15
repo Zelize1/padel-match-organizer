@@ -27,6 +27,7 @@ form {
   gap: 10px;
   margin-top: 20px;
   margin-bottom: 50px;
+  min-width: 50vw;
 }
 
 main {
@@ -65,13 +66,13 @@ button {
 
 .form-buttons {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 #submit-form,
 #add-entry {
   margin-top: 30px;
-  width: 40%;
+  width: 48%;
   height: 40px;
   border-radius: 10px;
   border-width: 1px;
@@ -93,6 +94,31 @@ button {
 
 #submit-form {
   background-color: #1e6b3a;
+}
+
+#plus {
+  font-size: 1.5rem;
+  line-height: 1;
+  vertical-align: middle;
+  margin-right: 10px;
+  transition: transform 1.3s;
+  display: inline-block;
+}
+
+#plus:hover {
+  font-size: 2rem;
+  transform: rotate(3600deg);
+  animation: rainbow 1.5s linear;
+  animation-iteration-count: infinite;
+}
+
+#submit-form:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#multi-times {
+  margin-top: 5%;
 }
 
 #add-entry {
@@ -261,7 +287,8 @@ iframe {
   z-index: 1000;
   width: 50px;
   color: black;
-  transition: color 0.3s ease; /* Smooth change */
+  transition: color 0.3s ease;
+  /* Smooth change */
 }
 
 #hamburger.open {
@@ -277,6 +304,45 @@ iframe {
   to {
     opacity: 1;
   }
+}
+
+@keyframes rainbow{
+		100%,0%{
+			color: rgb(255,0,0);
+		}
+		8%{
+			color: rgb(255,127,0);
+		}
+		16%{
+			color: rgb(255,255,0);
+		}
+		25%{
+			color: rgb(127,255,0);
+		}
+		33%{
+			color: rgb(0,255,0);
+		}
+		41%{
+			color: rgb(0,255,127);
+		}
+		50%{
+			color: rgb(0,255,255);
+		}
+		58%{
+			color: rgb(0,127,255);
+		}
+		66%{
+			color: rgb(0,0,255);
+		}
+		75%{
+			color: rgb(127,0,255);
+		}
+		83%{
+			color: rgb(255,0,255);
+		}
+		91%{
+			color: rgb(255,0,127);
+		}
 }
 
 @media (max-width: 600px) {
