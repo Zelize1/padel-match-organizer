@@ -117,6 +117,9 @@ Notat: ${e.message || "-"}`
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
       body: formData,
+      headers: {
+        "Accept": "application/json",
+      },
     });
 
 
