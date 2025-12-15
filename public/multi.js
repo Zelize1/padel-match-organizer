@@ -49,8 +49,8 @@ renderEntries();
 document.getElementById("add-entry").addEventListener("click", () => {
   const entry = {
     date: document.getElementById("date").value,
-    timeStart: document.getElementById("time-start").value,
-    timeEnd: document.getElementById("time-end").value,
+    timeStart: document.getElementById("time_start").value,
+    timeEnd: document.getElementById("time_end").value,
     message: document.getElementById("message").value,
   };
 
@@ -64,8 +64,8 @@ document.getElementById("add-entry").addEventListener("click", () => {
 
   // Clear only time-related fields
   document.getElementById("date").value = "";
-  document.getElementById("time-start").value = "";
-  document.getElementById("time-end").value = "";
+  document.getElementById("time_start").value = "";
+  document.getElementById("time_end").value = "";
   document.getElementById("message").value = "";
 
   renderEntries();

@@ -42,8 +42,8 @@ mobileMenu.querySelectorAll('button').forEach(btn => {
 
 window.onload = function () {
   document.getElementById("date").value = "";
-  document.getElementById("time-start").value = "";
-  document.getElementById("time-end").value = "";
+  document.getElementById("time_start").value = "";
+  document.getElementById("time_end").value = "";
   document.getElementById("message").value = "";
 };
 
@@ -75,8 +75,8 @@ form.addEventListener("submit", async (e) => {
     entriesToSend = [
       {
         date: document.getElementById("date").value,
-        timeStart: document.getElementById("time-start").value,
-        timeEnd: document.getElementById("time-end").value,
+        timeStart: document.getElementById("time_start").value,
+        timeEnd: document.getElementById("time_end").value,
         message: document.getElementById("message").value,
       },
     ];
@@ -104,9 +104,13 @@ Notat: ${e.message || "-"}`
   const formData = new FormData(form);
 
   document.getElementById("date").value = "";
-  document.getElementById("time-start").value = "";
-  document.getElementById("time-end").value = "";
+  document.getElementById("time_start").value = "";
+  document.getElementById("time_end").value = "";
   document.getElementById("message").value = "";
+
+  for (const [key, value] of formData.entries()) {
+    console.log(key);
+  }
 
   try {
     const response = await fetch("https://api.web3forms.com/submit", {
