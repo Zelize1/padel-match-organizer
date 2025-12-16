@@ -126,7 +126,7 @@ Notat: ${e.message || "-"}`
     const data = await response.json();
 
     if (data.success) {
-      window.location.href = "/public/submitted.html";
+      window.location.href = "/submitted.html";
     } else {
       throw new Error("Submission failed");
     }
