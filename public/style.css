@@ -18,7 +18,8 @@ nav {
 }
 
 #logo {
-  width: 200px;
+  width: 150px;
+  padding: 25px;
 }
 
 form {
@@ -292,6 +293,7 @@ iframe {
 }
 
 #hamburger.open {
+  display: flex;
   color: white;
   transition: color 0.3s ease;
 }
