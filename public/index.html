@@ -72,10 +72,50 @@
         <p class="velg-tidsrom">Velg tidsrom</p>
 
         <label for="time_start">Fra</label>
-        <input type="time" id="time_start" name="time_start" />
+        <input type="time" id="time_start" name="time_start" list="time-options" />
 
         <label for="time_end">Til</label>
-        <input type="time" id="time_end" name="time_end" />
+        <input type="time" id="time_end" name="time_end" list="time-options" />
+
+        <datalist id="time-options">
+          <option value="06:00:00">
+          <option value="06:30:00">
+          <option value="07:00:00">
+          <option value="07:30:00">
+          <option value="08:00:00">
+          <option value="08:30:00">
+          <option value="09:00:00">
+          <option value="09:30:00">
+          <option value="10:00:00">
+          <option value="10:30:00">
+          <option value="11:00:00">
+          <option value="11:30:00">
+          <option value="12:00:00">
+          <option value="12:30:00">
+          <option value="13:00:00">
+          <option value="13:30:00">
+          <option value="14:00:00">
+          <option value="14:30:00">
+          <option value="15:00:00">
+          <option value="15:30:00">
+          <option value="16:00:00">
+          <option value="16:30:00">
+          <option value="17:00:00">
+          <option value="17:30:00">
+          <option value="18:00:00">
+          <option value="18:30:00">
+          <option value="19:00:00">
+          <option value="19:30:00">
+          <option value="20:00:00">
+          <option value="20:30:00">
+          <option value="21:00:00">
+          <option value="21:30:00">
+          <option value="22:00:00">
+          <option value="22:30:00">
+          <option value="23:00:00">
+          <option value="23:30:00">
+          <option value="00:00:00">
+        </datalist>
 
         <label for="message">Notat</label>
         <textarea id="message" name="message"></textarea>
@@ -86,6 +126,8 @@
           <button type="submit" id="submit-form" disabled>Send inn</button>
         </div>
       </form>
+
+
 
       <div class="entries">
         <h3>Dine valgte tidspunkter</h3>
